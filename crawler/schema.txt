@@ -1,0 +1,7 @@
+CREATE TABLE rrs(id INTEGER PRIMARY KEY, name varchar(80), server_id int(9));
+CREATE TABLE servers(id INTEGER PRIMARY KEY, name varchar(80));
+
+mysql with auto increment:
+CREATE TABLE servers(id INTEGER PRIMARY KEY AUTO_INCREMENT, name varchar(80));
+CREATE TABLE rrs(id INTEGER PRIMARY KEY AUTO_INCREMENT, name varchar(80), server_id int(9));
+

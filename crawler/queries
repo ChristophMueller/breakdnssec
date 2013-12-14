@@ -1,0 +1,10 @@
+select name,count(*) as count from rrs
+group by name
+order by count desc
+
+select servers.name, rrs.count,rrs.server_id from
+(select server_id,count(*) as count from rrs
+group by server_id
+order by count desc  limit 0,20) as rrs,servers where rrs.server_id=servers.id
+
+SELECT COUNT(name) as c, LENGTH(name) AS l FROM rrs where l<5
