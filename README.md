@@ -17,3 +17,5 @@ This dictionary is later used by dns_recon/ to execute a dictionary attack on th
 
 breakdnssec depends on netaddr:
 `pip install netaddr`
+
+When using the crawler, do not forget to download the Alexa records as top-1m.csv into the crawler/ directory.
