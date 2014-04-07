@@ -13,3 +13,5 @@ This dictionary is later used by dns_recon/ to execute a dictionary attack on th
 - DNSSEC with NSEC3 (hash collecting a la zone walk, dictionary and brute force attack on the hashed host names) 
 
 
+breakdnssec depends on netaddr:
+`pip install netaddr`
