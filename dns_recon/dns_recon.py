@@ -155,10 +155,10 @@ def gather_hashes(ns, zone, nsecparam):
       current_query = query.format(ns, guess + "." + zone)
 
       try:
-        response = subprocess.check_output(current_query, shell=True)
-      except subprocess.CalledProcessError:
-        print "Could not dig for NSEC3 hashes."
-        return hashset
+        response = subprocess.check_output(current_query, stderr=subprocess.STDOUT, shell=True)
+      except subprocess.CalledProcessError, e:
+        print "Could not dig for NSEC3 hashes. Returned: \n", e.output
+	return set(gaps.keys())
       first = None
       second = None
       third = None
@@ -332,10 +332,13 @@ def analyze_zone(zone, ns):
 DICTIONARY = Set() 
 #read from csv
 def read_from_csv():
-  with open(DICTIONARY_PATH, 'rb') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
-    for row in spamreader:
-      DICTIONARY.add(row[0])
+  if os.path.isfile(DICTIONARY_PATH):
+    with open(DICTIONARY_PATH, 'rb') as csvfile:
+      spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+      for row in spamreader:
+        DICTIONARY.add(row[0])
+  else:
+    print "No dictionary found! Tried: %s" % DICTIONARY_PATH
 
 # code from http://pypi.python.org/pypi/django-powerdns-manager
 def hash_record(qname, salt, iterations):    

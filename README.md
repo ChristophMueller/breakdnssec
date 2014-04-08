@@ -19,3 +19,10 @@ breakdnssec depends on netaddr:
 `pip install netaddr`
 
 When using the crawler, do not forget to download the Alexa records as top-1m.csv into the crawler/ directory.
+
+## Research ##
+breakdnssec has been featured in http://dl.acm.org/citation.cfm?id=2527001
+The paper has won the best paper award at SIN'13 (Participants' Selection).
+
+## Maintenance ##
+The project is currently not being actively maintained, however maintenance will resume to extend the tool for more practical use cases.
